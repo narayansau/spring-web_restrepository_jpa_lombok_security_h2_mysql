@@ -59,7 +59,12 @@ public class Person{
 
     @PrePersist
     void onCreate() {
-       // this.setCreated(  );
+        this.setCreated(LocalDateTime.now());
+        this.setModified(LocalDateTime.now());
+    }
+    @PreUpdate
+    void onUpdate() {
+        this.setModified(LocalDateTime.now());
     }
 
     @Basic
@@ -172,4 +177,5 @@ public class Person{
     public int hashCode() {
         return Objects.hash( id, email, name, password, role, enabled, birthdate, created, modified );
     }
+
 }
